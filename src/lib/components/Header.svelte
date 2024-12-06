@@ -16,17 +16,22 @@
         <img src="/img/logo.png" alt="">
   
       <!-- Hamburger Button -->
-        <button class="hamburger" on:click={() => (isMenuOpen = !isMenuOpen)} aria-expanded={isMenuOpen}>
+        <button
+            class="hamburger"
+            onclick={() => (isMenuOpen = !isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        >
             <div class="line top" class:isOpen={isMenuOpen}></div>
             <div class="line middle" class:isOpen={isMenuOpen}></div>
             <div class="line bottom" class:isOpen={isMenuOpen}></div>
         </button>
-  
+    
       <!-- Navigační menu -->
         <div class="menu-overlay" class:isOpen={isMenuOpen}>
             <nav class="menu">
                 {#each links as { name, href }}
-                    <a href={href} on:click={() => (isMenuOpen = false)}>{name}</a>
+                    <a href={href} onclick={() => (isMenuOpen = false)}>{name}</a>
                 {/each}
             </nav>
         </div>
@@ -95,19 +100,19 @@
     }
 
     .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(176, 101, 101, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(176, 101, 101, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        pointer-events: none;
 
         &.isOpen {
             opacity: 1;
